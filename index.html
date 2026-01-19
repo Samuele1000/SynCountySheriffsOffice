@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contraband Registration System - Syn County</title>
+    <meta name="description"
+        content="Professional system for registering confiscated contraband for Syn County Sheriff's Office">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Rye&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="intro-style.css">
+    <link rel="stylesheet" href="modal-style.css">
+</head>
+
+<body>
+    <div id="intro-screen" class="intro-screen">
+        <div class="intro-content">
+            <div class="badge-icon intro-badge">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L3 7V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V7L12 2Z"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+            <h1>Syn County<br>Sheriff's Office</h1>
+            <p>Contraband Registration System</p>
+            <button id="enter-btn" class="enter-btn">Open Ledger</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="badge-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L3 7V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V7L12 2Z"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div>
+                    <h1>Contraband Registration</h1>
+                    <p class="subtitle">Syn County Sheriff's Office</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="info-card">
+            <div class="info-icon">ℹ️</div>
+            <div>
+                <strong>Processing, distributing or being in possession of contraband</strong>
+                <p>Fine: See Fine Table Below | 10 Months (Class A <strong>ONLY</strong>)</p>
+                <p>Confiscation: Contraband & Cash</p>
+            </div>
+        </div>
+
+        <div class="selected-items-panel" id="selectedPanel">
+            <div class="panel-header">
+                <h3>Selected Items</h3>
+                <button class="clear-btn" id="clearBtn">Clear All</button>
+            </div>
+            <div class="selected-items-list" id="selectedItemsList">
+                <p class="empty-state">No items selected</p>
+            </div>
+            <div class="panel-footer">
+                <button class="copy-btn" id="copyBtn" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2" />
+                        <path
+                            d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5"
+                            stroke="currentColor" stroke-width="2" />
+                    </svg>
+                    Copy for MDT
+                </button>
+            </div>
+        </div>
+
+        <div class="categories-grid">
+            <!-- Class A -->
+            <div class="category-card class-a">
+                <div class="category-header">
+                    <h2>Class A Contraband</h2>
+                    <span class="fine-badge">$1000 x Amount</span>
+                </div>
+                <div class="items-grid">
+                    <button class="item-btn" data-class="A" data-item="Government Official Uniform">
+                        <span class="item-name">Government Official Uniform</span>
+                    </button>
+                    <button class="item-btn" data-class="A" data-item="Handcuffs (Unless Law Enforcement)">
+                        <span class="item-name">Handcuffs (Unless Law Enforcement)</span>
+                    </button>
+                    <button class="item-btn" data-class="A" data-item="Train Key (Unless Train Conductor)">
+                        <span class="item-name">Train Key (Unless Train Conductor)</span>
+                    </button>
+                    <button class="item-btn" data-class="A" data-item="Throwable Acid (Weapon & Ammo)">
+                        <span class="item-name">Throwable Acid (Weapon & Ammo)</span>
+                    </button>
+                    <button class="item-btn" data-class="A" data-item="Molotov (Weapon & Ammo)">
+                        <span class="item-name">Molotov (Weapon & Ammo)</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Class B -->
+            <div class="category-card class-b">
+                <div class="category-header">
+                    <h2>Class B Contraband</h2>
+                    <span class="fine-badge">$100 x Amount</span>
+                </div>
+                <div class="items-grid">
+                    <button class="item-btn" data-class="B" data-item="Syn Package">
+                        <span class="item-name">Syn Package</span>
+                    </button>
+                    <button class="item-btn" data-class="B" data-item="Money Bags">
+                        <span class="item-name">Money Bags</span>
+                    </button>
+                    <button class="item-btn" data-class="B" data-item="Moonshine">
+                        <span class="item-name">Moonshine</span>
+                    </button>
+                    <button class="item-btn" data-class="B" data-item="Turbo Syn">
+                        <span class="item-name">Turbo Syn</span>
+                    </button>
+                    <button class="item-btn" data-class="B" data-item="Heroin">
+                        <span class="item-name">Heroin</span>
+                    </button>
+                    <button class="item-btn" data-class="B" data-item="Syn">
+                        <span class="item-name">Syn</span>
+                    </button>
+                    <button class="item-btn" data-class="B" data-item="Shipping Manuals">
+                        <span class="item-name">Shipping Manuals</span>
+                    </button>
+                    <button class="item-btn" data-class="B" data-item="Skeleton Keys">
+                        <span class="item-name">Skeleton Keys</span>
+                    </button>
+                    <button class="item-btn" data-class="B" data-item="Fort Keys">
+                        <span class="item-name">Fort Keys</span>
+                    </button>
+                    <button class="item-btn" data-class="B" data-item="Black Powder">
+                        <span class="item-name">Black Powder</span>
+                    </button>
+                    <button class="item-btn" data-class="B" data-item="Mining Drills">
+                        <span class="item-name">Mining Drills</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Class C -->
+            <div class="category-card class-c">
+                <div class="category-header">
+                    <h2>Class C Contraband</h2>
+                    <span class="fine-badge">$50 x Amount</span>
+                </div>
+                <div class="items-grid">
+                    <button class="item-btn" data-class="C"
+                        data-item="Morphine (Unless a Doctor, Barber or Prescribed)">
+                        <span class="item-name">Morphine (Unless a Doctor, Barber or Prescribed)</span>
+                    </button>
+                    <button class="item-btn" data-class="C"
+                        data-item="Acid (Unless Trapper/Pharmacist/Job or a Doctor)">
+                        <span class="item-name">Acid (Unless Trapper/Pharmacist/Job or a Doctor)</span>
+                    </button>
+                    <button class="item-btn" data-class="C" data-item="Bolas (Weapon & Ammo)">
+                        <span class="item-name">Bolas (Weapon & Ammo)</span>
+                    </button>
+                    <button class="item-btn" data-class="C" data-item="Pipe Charge Dynamite">
+                        <span class="item-name">Pipe Charge Dynamite</span>
+                    </button>
+                    <button class="item-btn" data-class="C" data-item="Safe Tools">
+                        <span class="item-name">Safe Tools</span>
+                    </button>
+                    <button class="item-btn" data-class="C" data-item="Lockpicks">
+                        <span class="item-name">Lockpicks</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Class D -->
+            <div class="category-card class-d">
+                <div class="category-header">
+                    <h2>Class D Contraband</h2>
+                    <span class="fine-badge">$25 x Amount</span>
+                </div>
+                <div class="items-grid">
+                    <button class="item-btn" data-class="D" data-item="Distillery Pot / Rubber Tube / Still Kits">
+                        <span class="item-name">Distillery Pot / Rubber Tube / Still Kits</span>
+                    </button>
+                    <button class="item-btn" data-class="D" data-item="Copper Pipes / Condensers">
+                        <span class="item-name">Copper Pipes / Condensers</span>
+                    </button>
+                    <button class="item-btn" data-class="D" data-item="Opium / Opium Milk">
+                        <span class="item-name">Opium / Opium Milk</span>
+                    </button>
+                    <button class="item-btn" data-class="D" data-item="Horse Stimulant">
+                        <span class="item-name">Horse Stimulant</span>
+                    </button>
+                    <button class="item-btn" data-class="D" data-item="Stolen Items">
+                        <span class="item-name">Stolen Items</span>
+                    </button>
+                    <button class="item-btn" data-class="D" data-item="Liquid Blue">
+                        <span class="item-name">Liquid Blue</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>⚠️ All Confiscated Contraband must be placed in evidence in the Sheriff's Office and logged in the arrest
+                report.</p>
+            <p style="margin-top: 1rem; font-size: 0.8rem;"><a href="#" id="privacy-link"
+                    style="color: var(--ink-secondary); text-decoration: none; border-bottom: 1px dashed currentColor;">Privacy
+                    Policy</a></p>
+        </footer>
+    </div>
+
+    <div id="privacy-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Notice of Privacy</h2>
+            <hr style="border: 0; border-top: 1px solid var(--ink-red); margin: 1rem 0;">
+            <p><strong>To Whom It May Concern:</strong></p>
+            <p>Be it known that this register is for temporary calculation purposes only.</p>
+            <p>The Sheriff's Office collects <strong>NO DATA</strong>. No inputs, selections, or records are stored,
+                transmitted, or saved on any server.</p>
+            <p>This facility is hosted via <strong>GitHub</strong> strictly for access.</p>
+            <hr style="border: 0; border-top: 1px dashed var(--ink-old-paper); margin: 1rem 0; opacity: 0.5;">
+            <p style="font-size: 0.9em;"><strong>DISCLAIMER:</strong><br>Always double-check calculations
+                manually.<br>The Deputy is responsible for the accuracy of all entries.</p>
+            <br>
+            <p style="text-align: right; font-family: var(--font-display);">Signed,<br>The Sheriff</p>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+        <span>Copied to clipboard!</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

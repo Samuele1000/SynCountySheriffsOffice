@@ -1,0 +1,54 @@
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 3000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(2px);
+}
+
+.modal-content {
+    background-color: var(--paper-bg);
+    margin: 15% auto;
+    padding: 2rem;
+    border: 3px double var(--ink-primary);
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+    background-image: repeating-linear-gradient(to right, transparent 0 100%, #e6dcc3 0),
+        repeating-linear-gradient(to bottom, transparent 0 100%, #e6dcc3 0),
+        radial-gradient(#d3c7a8 20%, transparent 20%);
+    background-size: 10px 10px;
+}
+
+.close-modal {
+    color: var(--ink-red);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 0.8;
+}
+
+.close-modal:hover {
+    color: var(--ink-primary);
+}
+
+.modal h2 {
+    font-family: var(--font-display);
+    color: var(--ink-primary);
+    text-align: center;
+    margin-top: 0;
+}
+
+.modal p {
+    font-family: var(--font-text);
+    color: var(--ink-primary);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
