@@ -452,7 +452,7 @@ body {
 }
 
 .nav-btn {
-    background: transparent;
+    background: #1f8fbb;
     border: 2px solid var(--ink-primary);
     color: var(--ink-primary);
     padding: 0.5rem 1rem;
