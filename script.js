@@ -12,15 +12,24 @@ const toast = document.getElementById('toast');
 function init() {
     // Intro Screen Logic
     const introScreen = document.getElementById('intro-screen');
-    const enterBtn = document.getElementById('enter-btn');
+    const enterLedgerBtn = document.getElementById('enter-ledger-btn');
+    const enterOrdinancesBtn = document.getElementById('enter-ordinances-btn');
 
-    if (enterBtn && introScreen) {
-        enterBtn.addEventListener('click', () => {
-            introScreen.classList.add('fade-out');
-            setTimeout(() => {
-                introScreen.style.display = 'none';
-            }, 800);
-        });
+    if (introScreen) {
+        if (enterLedgerBtn) {
+            enterLedgerBtn.addEventListener('click', () => {
+                introScreen.classList.add('fade-out');
+                setTimeout(() => {
+                    introScreen.style.display = 'none';
+                }, 800);
+            });
+        }
+
+        if (enterOrdinancesBtn) {
+            enterOrdinancesBtn.addEventListener('click', () => {
+                window.location.href = 'ordinances.html';
+            });
+        }
     }
 
     // Privacy Modal Logic

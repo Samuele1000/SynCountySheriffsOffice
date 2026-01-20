@@ -444,3 +444,74 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* Navigation Styles */
+.nav-link-container {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.nav-btn {
+    background: transparent;
+    border: 2px solid var(--ink-primary);
+    color: var(--ink-primary);
+    padding: 0.5rem 1rem;
+    font-family: var(--font-display);
+    text-decoration: none;
+    display: inline-block;
+    transition: var(--transition);
+    text-transform: uppercase;
+}
+
+.nav-btn:hover {
+    background: var(--ink-primary);
+    color: var(--paper-bg);
+}
+
+/* Ordinance Page Styles */
+.ordinance-card {
+    background-color: var(--paper-bg);
+    background-image: repeating-linear-gradient(to right, transparent 0 100%, #e6dcc3 0),
+        repeating-linear-gradient(to bottom, transparent 0 100%, #e6dcc3 0),
+        radial-gradient(#d3c7a8 20%, transparent 20%);
+    background-size: 10px 10px;
+    border: 1px solid var(--border-color);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5),
+        inset 0 0 40px rgba(139, 69, 19, 0.15);
+    color: var(--ink-primary);
+    border-radius: 2px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.region-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--ink-red);
+    border-bottom: 2px solid var(--ink-secondary);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+.ordinance-item {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed rgba(61, 52, 43, 0.3);
+}
+
+.ordinance-item:last-child {
+    border-bottom: none;
+}
+
+.ordinance-title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--ink-primary);
+}
+
+.ordinance-text {
+    font-family: var(--font-text);
+    line-height: 1.6;
+}
