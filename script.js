@@ -30,6 +30,13 @@ function init() {
                 window.location.href = 'ordinances.html';
             });
         }
+
+        const enterBriefingBtn = document.getElementById('enter-briefing-btn');
+        if (enterBriefingBtn) {
+            enterBriefingBtn.addEventListener('click', () => {
+                window.location.href = 'briefing.html';
+            });
+        }
     }
 
     // Privacy Modal Logic
@@ -70,8 +77,19 @@ function init() {
         btn.addEventListener('click', () => toggleItem(btn));
     });
 
-    copyBtn.addEventListener('click', copyToClipboard);
-    clearBtn.addEventListener('click', clearAllItems);
+    if (copyBtn) {
+        copyBtn.addEventListener('click', copyToClipboard);
+    }
+
+    if (clearBtn) {
+        clearBtn.addEventListener('click', clearAllItems);
+    }
+
+    // Briefing Page Logic
+    const copyBriefingBtn = document.getElementById('copyBriefingBtn');
+    if (copyBriefingBtn) {
+        copyBriefingBtn.addEventListener('click', copyBriefingNotes);
+    }
 
     updateUI();
 }
@@ -95,6 +113,22 @@ function toggleItem(btn) {
     }
 
     updateUI();
+}
+
+// Toggle N/A state for fields
+function toggleNA(fieldId) {
+    const checkbox = document.getElementById('na_' + fieldId);
+    const textarea = document.getElementById(fieldId);
+
+    if (checkbox && textarea) {
+        textarea.disabled = checkbox.checked;
+        if (checkbox.checked) {
+            textarea.value = ''; // Optional: clear value when disabled
+            textarea.placeholder = "N/A";
+        } else {
+            textarea.placeholder = textarea.dataset.originalPlaceholder || "Updates...";
+        }
+    }
 }
 
 // Get fine amount based on class
@@ -250,6 +284,69 @@ function fallbackCopyToClipboard(text) {
     }
 
     document.body.removeChild(textArea);
+}
+
+// Helper to get field value or N/A
+function getFieldValue(fieldId) {
+    const checkbox = document.getElementById('na_' + fieldId);
+    const textarea = document.getElementById(fieldId);
+
+    if (checkbox && checkbox.checked) {
+        return "N/A";
+    }
+    return textarea ? textarea.value : "";
+}
+
+// Copy Briefing Notes
+async function copyBriefingNotes() {
+    const date = document.getElementById('briefingDate').value;
+    const time = document.getElementById('briefingTime').value;
+    const newAustin = getFieldValue('newAustin');
+    const westElizabeth = getFieldValue('westElizabeth');
+    const newHanover = getFieldValue('newHanover');
+    const lemoyne = getFieldValue('lemoyne');
+    const secretaries = getFieldValue('secretaries');
+    const specialForces = getFieldValue('specialForces');
+    const sisika = getFieldValue('sisika');
+    const bocBol = getFieldValue('bocBol');
+    const notes = getFieldValue('notes');
+
+    const formattedText = `${date} - ${time}
+
+New Austin: 
+${newAustin}
+
+West Elizabeth: 
+${westElizabeth}
+
+New Hanover: 
+${newHanover}
+
+Lemoyne: 
+${lemoyne}
+
+Secretaries: 
+${secretaries}
+
+Special Forces:
+${specialForces}
+
+Sisika Sheriff's Office:
+${sisika}
+
+BOC / BOL: 
+${bocBol}
+
+Notes:
+${notes}`;
+
+    try {
+        await navigator.clipboard.writeText(formattedText);
+        showToast();
+    } catch (err) {
+        console.error('Failed to copy briefing:', err);
+        fallbackCopyToClipboard(formattedText);
+    }
 }
 
 // Show toast notification
