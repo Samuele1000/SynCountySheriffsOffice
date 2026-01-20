@@ -214,12 +214,14 @@ async function copyToClipboard() {
     if (selectedItems.size === 0) return;
 
     // Build text output - only selected items with quantity and class
-    let output = '';
+    let items = [];
 
     selectedItems.forEach(item => {
         const quantity = item.quantity || 1;
-        output += `${item.name} - ${quantity}x - Class ${item.class}\n`;
+        items.push(`${item.name} - ${quantity}x - Class ${item.class}`);
     });
+
+    const output = items.join(', ');
 
     try {
         await navigator.clipboard.writeText(output.trim());
