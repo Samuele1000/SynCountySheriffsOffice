@@ -18,10 +18,7 @@ function init() {
     if (introScreen) {
         if (enterLedgerBtn) {
             enterLedgerBtn.addEventListener('click', () => {
-                introScreen.classList.add('fade-out');
-                setTimeout(() => {
-                    introScreen.style.display = 'none';
-                }, 800);
+                window.location.href = 'registry.html';
             });
         }
 

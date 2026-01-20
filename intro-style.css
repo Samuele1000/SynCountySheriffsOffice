@@ -25,9 +25,11 @@
     padding: 3rem;
     border: 3px double var(--ink-primary);
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
-    max-width: 500px;
-    width: 90%;
+    max-width: 800px;
+    width: 95%;
     position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .intro-content::before {
@@ -41,10 +43,14 @@
     pointer-events: none;
 }
 
+.intro-header {
+    margin-bottom: 2rem;
+}
+
 .intro-badge {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 2rem;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1rem;
     color: var(--gold-accent);
 }
 
@@ -58,30 +64,72 @@
 
 .intro-content p {
     font-family: var(--font-text);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--ink-secondary);
-    margin-bottom: 2rem;
-    font-style: italic;
+}
+
+.intro-divider {
+    border: 0;
+    border-top: 1px dashed var(--ink-primary);
+    margin: 2rem 0;
+    opacity: 0.5;
+}
+
+.intro-section {
+    margin-bottom: 2.5rem;
+}
+
+.intro-section h2 {
+    font-family: var(--font-display);
+    color: var(--ink-red);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    text-align: left;
+}
+
+.feature-item h3 {
+    font-family: var(--font-display);
+    color: var(--ink-primary);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--ink-old-paper);
+    padding-bottom: 0.2rem;
+}
+
+.feature-item p {
+    font-size: 0.95rem;
+    margin-bottom: 0;
+    font-style: normal;
 }
 
 .intro-actions {
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
     width: 100%;
+    margin-top: 2rem;
 }
 
 .enter-btn {
+    flex: 1 1 200px;
     background: var(--ink-primary);
     color: var(--paper-bg);
     border: none;
     padding: 1rem;
-    width: 100%;
     font-family: var(--font-display);
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     cursor: pointer;
     transition: var(--transition);
     border: 2px solid transparent;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .enter-btn:hover {
