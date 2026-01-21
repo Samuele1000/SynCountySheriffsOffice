@@ -297,7 +297,10 @@ async function copyToClipboard() {
         items.push(`${item.name} - ${quantity}x - Class ${item.class}`);
     });
 
-    const output = items.join(', ');
+    const separatorSelect = document.getElementById('separatorSelect');
+    const separator = separatorSelect ? separatorSelect.value : ', ';
+
+    const output = items.join(separator);
 
     try {
         await navigator.clipboard.writeText(output.trim());

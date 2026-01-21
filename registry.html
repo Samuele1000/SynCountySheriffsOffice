@@ -74,6 +74,17 @@
                 <!-- Totals injected here -->
             </div>
             <div class="panel-footer">
+                <div class="separator-control"
+                    style="margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                    <label for="separatorSelect"
+                        style="font-size: 0.8rem; color: var(--ink-secondary);">Separator:</label>
+                    <select id="separatorSelect"
+                        style="background: var(--paper-light); border: 1px solid var(--ink-border); padding: 0.2rem; font-family: 'Courier Prime', monospace; color: var(--ink-primary); outline: none;">
+                        <option value=", ">, (Comma)</option>
+                        <option value=" | ">| (Pipe)</option>
+                        <option value=" "> (Space)</option>
+                    </select>
+                </div>
                 <button class="copy-btn" id="copyBtn" disabled>
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2" />
