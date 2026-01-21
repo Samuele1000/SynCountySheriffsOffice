@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Error - Syn County Sheriff's Office</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Rye&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="intro-style.css">
+    <style>
+        .error-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            color: var(--ink-red);
+            animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+        }
+
+        @keyframes shake {
+
+            10%,
+            90% {
+                transform: translate3d(-1px, 0, 0);
+            }
+
+            20%,
+            80% {
+                transform: translate3d(2px, 0, 0);
+            }
+
+            30%,
+            50%,
+            70% {
+                transform: translate3d(-4px, 0, 0);
+            }
+
+            40%,
+            60% {
+                transform: translate3d(4px, 0, 0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="intro-screen">
+        <div class="intro-content" style="max-width: 600px; border-color: var(--ink-red);">
+            <div class="intro-header">
+                <div class="error-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 9V14" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M12 18V18.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+                    </svg>
+                </div>
+                <div>
+                    <h1 style="color: var(--ink-red);">System Cleanse Required</h1>
+                    <p class="subtitle">Critical Malfunction Detected</p>
+                </div>
+            </div>
+
+            <hr class="intro-divider">
+
+            <div class="intro-body">
+                <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">The digital trails have gone cold. An unexpected
+                    error has compromised the session.</p>
+                <div
+                    style="background: rgba(138, 44, 32, 0.1); padding: 1.5rem; border: 1px dashed var(--ink-red); border-radius: 4px;">
+                    <p style="margin-bottom: 0.5rem; font-weight: bold;">IMMEDIATE ACTION REQUIRED:</p>
+                    <p>Contact <strong>Henry Williams</strong>, Systems Specialist.</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem; font-style: italic;">"When the code breaks, he
+                        fixes it."</p>
+                </div>
+            </div>
+
+            <div class="intro-actions" style="margin-top: 2.5rem;">
+                <a href="index.html" class="enter-btn" style="text-decoration: none; display: inline-block;">Return to
+                    Safety</a>
+            </div>
+
+            <footer style="margin-top: 2rem; opacity: 0.7;">
+                <p style="font-size: 0.8rem;">Error Code: <strong>SNAKE_IN_BOOT</strong></p>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>

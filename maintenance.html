@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance - Syn County Sheriff's Office</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Rye&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="intro-style.css">
+    <style>
+        .maintenance-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            color: var(--ink-red);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="intro-screen">
+        <div class="intro-content" style="max-width: 600px;">
+            <div class="intro-header">
+                <div class="maintenance-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M14.7 6.3L20 11.6L17.7 13.9L12.4 8.6L14.7 6.3ZM5.9 14.8L2.4 21.6L9.2 18.1L12 15.3L8.7 12L5.9 14.8Z"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12.4 8.6L12 8.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M12 15.3L8.7 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div>
+                    <h1>System Maintenance</h1>
+                    <p class="subtitle" style="color: var(--ink-red);">Offline for Upgrades</p>
+                </div>
+            </div>
+
+            <hr class="intro-divider">
+
+            <div class="intro-body">
+                <p style="margin-bottom: 1.5rem;">The Syn County Sheriff's digital backbone is currently undergoing
+                    essential reinforcements.</p>
+                <p> Systems Specialist <strong>Henry Williams</strong> is currently deploying patches to the
+                    mainframe to ensure maximum security and uptime.</p>
+            </div>
+
+            <div class="intro-actions" style="margin-top: 2.5rem;">
+                <a href="index.html" class="enter-btn" style="text-decoration: none; display: inline-block;">Return to
+                    Duty</a>
+            </div>
+
+            <footer style="margin-top: 2rem; opacity: 0.7;">
+                <p style="font-size: 0.8rem;">Expected uptime: <em>Shortly</em></p>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>
