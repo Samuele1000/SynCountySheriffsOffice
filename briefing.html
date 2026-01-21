@@ -13,6 +13,7 @@
         rel="stylesheet">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modal-style.css">
     <style>
         .form-group {
             margin-bottom: 1.5rem;
@@ -259,6 +260,20 @@
         <span>Copied to clipboard!</span>
     </div>
 
+    <div id="confidentiality-modal" class="modal" style="display: flex; align-items: center; justify-content: center;">
+        <div class="modal-content" style="margin: 0; max-width: 600px;">
+            <h2 style="color: var(--ink-red); margin-bottom: 1rem;">Confidential Information & Accountability</h2>
+            <hr style="border: 0; border-top: 1px solid var(--ink-red); margin: 1rem 0;">
+            <p style="text-align: center; font-weight: bold;">WARNING: OFFICIAL USE ONLY</p>
+            <p>You are accessing the Syn County Sheriff's Office Briefing Notes System.</p>
+            <p>All information contained herein is classified <strong>CONFIDENTIAL</strong>. Unauthorized distribution,
+                copying, or sharing of this data is a severe violation of department policy and state law.</p>
+            <p>By proceeding, you acknowledge your accountability for safeguarding this information.</p>
+            <br>
+            <button id="accept-btn" class="copy-btn" style="width: 100%;">I Accept & Understand</button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
     <script>
         // Set today's date by default
@@ -268,6 +283,25 @@
         const now = new Date();
         const timeString = now.toTimeString().split(' ')[0].substring(0, 5);
         document.getElementById('briefingTime').value = timeString;
+
+        // Confidentiality Modal Logic
+        const modal = document.getElementById('confidentiality-modal');
+        const acceptBtn = document.getElementById('accept-btn');
+
+        // Prevent clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        });
+
+        acceptBtn.addEventListener('click', () => {
+            modal.style.opacity = '0';
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 500);
+        });
     </script>
 </body>
 
