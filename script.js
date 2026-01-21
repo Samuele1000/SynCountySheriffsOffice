@@ -97,8 +97,13 @@ function toggleItem(btn) {
     const itemClass = btn.dataset.class;
 
     if (selectedItems.has(itemName)) {
-        selectedItems.delete(itemName);
-        btn.classList.remove('selected');
+        // Stacking behavior: Increment quantity instead of removing
+        const item = selectedItems.get(itemName);
+        item.quantity = (item.quantity || 1) + 1;
+        selectedItems.set(itemName, item);
+
+        // Add visual feedback that item was added (optional, but good for UX)
+        btn.classList.add('selected');
     } else {
         selectedItems.set(itemName, {
             name: itemName,
@@ -141,13 +146,16 @@ function getFineAmount(itemClass) {
 
 // Update UI
 function updateUI() {
+    const totalsContainer = document.getElementById('fine-totals');
+
     if (selectedItems.size === 0) {
         selectedItemsList.innerHTML = '<p class="empty-state">No items selected</p>';
         copyBtn.disabled = true;
+        if (totalsContainer) totalsContainer.style.display = 'none';
     } else {
         selectedItemsList.innerHTML = '';
 
-        // Group by class
+        // Group by class and calculate totals
         const grouped = {
             'A': [],
             'B': [],
@@ -155,8 +163,16 @@ function updateUI() {
             'D': []
         };
 
+        const classTotals = {
+            'A': 0,
+            'B': 0,
+            'C': 0,
+            'D': 0
+        };
+
         selectedItems.forEach(item => {
             grouped[item.class].push(item);
+            classTotals[item.class] += item.fine * item.quantity;
         });
 
         // Display grouped items
@@ -168,6 +184,34 @@ function updateUI() {
                 });
             }
         });
+
+        // Update Totals Display
+        if (totalsContainer) {
+            totalsContainer.style.display = 'block';
+            let totalsHtml = '<h4 style="margin: 0 0 0.5rem 0; font-family: var(--font-display); color: var(--ink-primary);">PROJECTED FINES</h4>';
+            let grandTotal = 0;
+
+            Object.entries(classTotals).forEach(([cls, total]) => {
+                if (total > 0) {
+                    totalsHtml += `
+                        <div style="display: flex; justify-content: space-between; font-family: 'Courier Prime', monospace; font-size: 0.9rem; margin-bottom: 0.25rem;">
+                            <span>Class ${cls}:</span>
+                            <span>$${total.toLocaleString()}</span>
+                        </div>
+                    `;
+                    grandTotal += total;
+                }
+            });
+
+            totalsHtml += `
+                <div style="display: flex; justify-content: space-between; font-weight: bold; margin-top: 0.5rem; border-top: 1px dashed var(--ink-border); padding-top: 0.5rem;">
+                    <span>TOTAL:</span>
+                    <span>$${grandTotal.toLocaleString()}</span>
+                </div>
+            `;
+
+            totalsContainer.innerHTML = totalsHtml;
+        }
 
         copyBtn.disabled = false;
     }
@@ -212,6 +256,7 @@ function updateQuantity(itemName, quantity) {
     if (item) {
         item.quantity = Math.max(1, Math.min(999, parseInt(quantity) || 1));
         selectedItems.set(itemName, item);
+        updateUI(); // Need to update UI to refresh totals
     }
 }
 
