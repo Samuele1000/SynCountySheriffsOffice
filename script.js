@@ -88,23 +88,6 @@ function init() {
         copyBriefingBtn.addEventListener('click', copyBriefingNotes);
     }
 
-    // Onboarding Logic
-    const onboardingModal = document.getElementById('onboarding-modal');
-    const dismissOnboardingBtn = document.getElementById('dismiss-onboarding-btn');
-
-    if (onboardingModal && !localStorage.getItem('syn_onboarding_complete')) {
-        setTimeout(() => {
-            onboardingModal.style.display = 'block';
-        }, 500);
-
-        if (dismissOnboardingBtn) {
-            dismissOnboardingBtn.addEventListener('click', () => {
-                onboardingModal.style.display = 'none';
-                localStorage.setItem('syn_onboarding_complete', 'true');
-            });
-        }
-    }
-
     updateUI();
 }
 
