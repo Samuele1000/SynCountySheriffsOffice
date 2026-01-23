@@ -88,6 +88,34 @@ function init() {
         copyBriefingBtn.addEventListener('click', copyBriefingNotes);
     }
 
+    // Mutual exclusivity for Notes N/A and Standard Notes
+    const naNotes = document.getElementById('na_notes');
+    const includeStandardNotes = document.getElementById('includeStandardNotes');
+
+    if (naNotes && includeStandardNotes) {
+        naNotes.addEventListener('change', () => {
+            if (naNotes.checked) {
+                includeStandardNotes.checked = false;
+                includeStandardNotes.disabled = true;
+            } else {
+                includeStandardNotes.disabled = false;
+            }
+        });
+
+        includeStandardNotes.addEventListener('change', () => {
+            if (includeStandardNotes.checked && naNotes.checked) {
+                naNotes.checked = false;
+                toggleNA('notes');
+            }
+        });
+
+        // Initial check state
+        if (naNotes.checked) {
+            includeStandardNotes.checked = false;
+            includeStandardNotes.disabled = true;
+        }
+    }
+
     updateUI();
 }
 
@@ -355,6 +383,22 @@ async function copyBriefingNotes() {
     const sisika = getFieldValue('sisika');
     const bocBol = getFieldValue('bocBol');
     const notes = getFieldValue('notes');
+    const includeStandardNotes = document.getElementById('includeStandardNotes');
+
+    let finalNotes = notes;
+    if (includeStandardNotes && includeStandardNotes.checked) {
+        const standardNotes = `Briefings start 15 minutes before storm show up on time, This is very important!
+
+Check out (It's got region ordinances organized and lots of other good tools) https://samuele1000.github.io/SynCountySheriffsOffice/
+
+Senior Deputy+ Keep taking shadow.`;
+
+        if (finalNotes) {
+            finalNotes += '\n\n' + standardNotes;
+        } else {
+            finalNotes = standardNotes;
+        }
+    }
 
     const formattedText = `${date} - ${time}
 
@@ -383,7 +427,7 @@ BOC / BOL:
 ${bocBol}
 
 Notes:
-${notes}`;
+${finalNotes}`;
 
     try {
         await navigator.clipboard.writeText(formattedText);

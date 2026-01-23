@@ -65,7 +65,6 @@
             z-index: 100;
         }
     </style>
-    <script src="maintenance.js"></script>
 </head>
 
 <body>
@@ -233,6 +232,13 @@
                         </div>
                     </div>
                     <textarea id="notes" class="form-textarea" placeholder="Additional notes..."></textarea>
+
+                    <div style="margin-top: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <input type="checkbox" id="includeStandardNotes" checked>
+                        <label for="includeStandardNotes"
+                            style="font-family: var(--font-text); font-size: 0.9rem; cursor: pointer; color: var(--ink-primary);">Include
+                            Standard Briefing Notes</label>
+                    </div>
                 </div>
             </form>
         </div>
