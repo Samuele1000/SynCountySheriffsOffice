@@ -167,7 +167,8 @@ function getFineAmount(itemClass) {
         'A': 1000,
         'B': 100,
         'C': 50,
-        'D': 25
+        'D': 25,
+        'NC': 0
     };
     return fines[itemClass] || 0;
 }
@@ -254,7 +255,8 @@ function createSelectedItemElement(item) {
         'A': 'Class A Contraband',
         'B': 'Class B Contraband',
         'C': 'Class C Contraband',
-        'D': 'Class D Contraband'
+        'D': 'Class D Contraband',
+        'NC': 'Non-Contraband / Valuable'
     };
 
     div.innerHTML = `
@@ -320,9 +322,15 @@ async function copyToClipboard() {
     // Build text output - only selected items with quantity and class
     let items = [];
 
-    selectedItems.forEach(item => {
+    // Convert map to array and sort by fine amount (highest to lowest)
+    // Non-Contraband (NC) has fine 0, so it will be last
+    const sortedItems = Array.from(selectedItems.values()).sort((a, b) => {
+        return b.fine - a.fine;
+    });
+
+    sortedItems.forEach(item => {
         const quantity = item.quantity || 1;
-        items.push(`${item.name} - ${quantity}x - Class ${item.class}`);
+        items.push(`${item.name} - ${quantity}x - ${item.class === 'NC' ? 'Non-Contraband' : 'Class ' + item.class}`);
     });
 
     const separatorSelect = document.getElementById('separatorSelect');
