@@ -1,5 +1,6 @@
 // State management
 let selectedItems = new Map();
+let hasSeenWeaponWarning = false;
 
 // DOM Elements
 const itemButtons = document.querySelectorAll('.item-btn');
@@ -119,10 +120,45 @@ function init() {
     updateUI();
 }
 
+
+
+// Helper to show weapon modal
+function showWeaponModal() {
+    const weaponModal = document.getElementById('weapon-modal');
+    const closeWeaponBtn = document.getElementById('close-weapon-modal');
+    const acknowledgeBtn = document.getElementById('acknowledge-weapon-btn');
+
+    if (weaponModal) {
+        weaponModal.style.display = 'block';
+
+        // Close handlers
+        const closeModal = () => {
+            weaponModal.style.display = 'none';
+        };
+
+        if (closeWeaponBtn) closeWeaponBtn.onclick = closeModal;
+        if (acknowledgeBtn) acknowledgeBtn.onclick = closeModal;
+
+        // Click outside
+        window.onclick = (event) => {
+            if (event.target == weaponModal) {
+                closeModal();
+            }
+        };
+    }
+}
+
 // Toggle item selection
 function toggleItem(btn) {
     const itemName = btn.dataset.item;
     const itemClass = btn.dataset.class;
+
+    // Check for weapon warning
+    const weaponClasses = ['WH', 'WL', 'WM', 'W'];
+    if (weaponClasses.includes(itemClass) && !hasSeenWeaponWarning) {
+        showWeaponModal();
+        hasSeenWeaponWarning = true;
+    }
 
     if (selectedItems.has(itemName)) {
         // Stacking behavior: Increment quantity instead of removing
