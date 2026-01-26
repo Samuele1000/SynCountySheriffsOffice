@@ -168,6 +168,10 @@ function getFineAmount(itemClass) {
         'B': 100,
         'C': 50,
         'D': 25,
+        'WH': 0,
+        'WL': 0,
+        'WM': 0,
+        'W': 0,
         'NC': 0
     };
     return fines[itemClass] || 0;
@@ -190,6 +194,10 @@ function updateUI() {
             'B': [],
             'C': [],
             'D': [],
+            'WH': [],
+            'WL': [],
+            'WM': [],
+            'W': [],
             'NC': []
         };
 
@@ -198,6 +206,10 @@ function updateUI() {
             'B': 0,
             'C': 0,
             'D': 0,
+            'WH': 0,
+            'WL': 0,
+            'WM': 0,
+            'W': 0,
             'NC': 0
         };
 
@@ -258,6 +270,10 @@ function createSelectedItemElement(item) {
         'B': 'Class B Contraband',
         'C': 'Class C Contraband',
         'D': 'Class D Contraband',
+        'WH': 'Hand Weapon',
+        'WL': 'Long Weapon',
+        'WM': 'Melee Weapon',
+        'W': 'Weapon',
         'NC': 'Non-Contraband / Valuable'
     };
 
@@ -332,7 +348,13 @@ async function copyToClipboard() {
 
     sortedItems.forEach(item => {
         const quantity = item.quantity || 1;
-        items.push(`${item.name} - ${quantity}x - ${item.class === 'NC' ? 'Non-Contraband' : 'Class ' + item.class}`);
+        let classLabel = 'Class ' + item.class;
+        if (item.class === 'NC') classLabel = 'Non-Contraband';
+        if (item.class === 'W') classLabel = 'Weapon';
+        if (item.class === 'WH') classLabel = 'Hand Weapon';
+        if (item.class === 'WL') classLabel = 'Long Weapon';
+        if (item.class === 'WM') classLabel = 'Melee Weapon';
+        items.push(`${item.name} - ${quantity}x - ${classLabel}`);
     });
 
     const separatorSelect = document.getElementById('separatorSelect');
