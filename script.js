@@ -189,14 +189,16 @@ function updateUI() {
             'A': [],
             'B': [],
             'C': [],
-            'D': []
+            'D': [],
+            'NC': []
         };
 
         const classTotals = {
             'A': 0,
             'B': 0,
             'C': 0,
-            'D': 0
+            'D': 0,
+            'NC': 0
         };
 
         selectedItems.forEach(item => {
