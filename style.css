@@ -141,9 +141,6 @@ body {
 .selected-items-panel {
     padding: 1.5rem;
     margin-bottom: 2rem;
-    position: sticky;
-    top: 1rem;
-    z-index: 100;
     border: 3px double var(--ink-primary);
 }
 
