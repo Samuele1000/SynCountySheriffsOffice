@@ -1,6 +1,6 @@
 // State management
 let selectedItems = new Map();
-let hasSeenWeaponWarning = false;
+let hasSeenWeaponWarning = localStorage.getItem('hasSeenWeaponWarning') === 'true';
 
 // DOM Elements
 const itemButtons = document.querySelectorAll('.item-btn');
@@ -137,7 +137,13 @@ function showWeaponModal() {
         };
 
         if (closeWeaponBtn) closeWeaponBtn.onclick = closeModal;
-        if (acknowledgeBtn) acknowledgeBtn.onclick = closeModal;
+        if (acknowledgeBtn) {
+            acknowledgeBtn.onclick = () => {
+                closeModal();
+                hasSeenWeaponWarning = true;
+                localStorage.setItem('hasSeenWeaponWarning', 'true');
+            };
+        }
 
         // Click outside
         window.onclick = (event) => {
@@ -306,7 +312,7 @@ function createSelectedItemElement(item) {
         'B': 'Class B Contraband',
         'C': 'Class C Contraband',
         'D': 'Class D Contraband',
-        'WH': 'Hand Weapon',
+        'WH': 'Sidearm',
         'WL': 'Long Weapon',
         'WM': 'Melee Weapon',
         'W': 'Weapon',
@@ -387,7 +393,7 @@ async function copyToClipboard() {
         let classLabel = 'Class ' + item.class;
         if (item.class === 'NC') classLabel = 'Non-Contraband';
         if (item.class === 'W') classLabel = 'Weapon';
-        if (item.class === 'WH') classLabel = 'Hand Weapon';
+        if (item.class === 'WH') classLabel = 'Sidearm';
         if (item.class === 'WL') classLabel = 'Long Weapon';
         if (item.class === 'WM') classLabel = 'Melee Weapon';
         items.push(`${item.name} - ${quantity}x - ${classLabel}`);
