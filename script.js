@@ -468,7 +468,13 @@ Senior Deputy+ Keep taking shadow.`;
         }
     }
 
-    const formattedText = `${date} - ${time}
+    // Convert date and time to Discord timestamp
+    const dateTimeString = `${date}T${time}:00`;
+    const dateTimeObj = new Date(dateTimeString);
+    const unixTimestamp = Math.floor(dateTimeObj.getTime() / 1000);
+    const discordTimestamp = `<t:${unixTimestamp}:F>`;
+
+    const formattedText = `${discordTimestamp}
 
 New Austin: 
 ${newAustin}
